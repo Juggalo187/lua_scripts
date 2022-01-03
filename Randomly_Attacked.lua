@@ -1,4 +1,4 @@
-local enabled = true
+local enabled = false
 local spawnslist = {2260,14281,14221,2244,2261} -- npcid's
 local hpmultiplier = 0.85 -- Spawned npc hp will be multiplied by players hp.
 local despawntime = 25 --seconds before npc despawns

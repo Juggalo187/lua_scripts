@@ -1,4 +1,4 @@
-local GMonly = true;  --.xp works opens for GM
+local GMonly = false  --.xp works opens for GM
 
 
 

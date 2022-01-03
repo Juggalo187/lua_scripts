@@ -1,4 +1,4 @@
-local enabled = true
+local enabled = false
 local command = "menu"
 local hirenpcbots = true -- True is for when server uses NPC_Bots from trickerer https://github.com/trickerer/Trinity-Bots
 
