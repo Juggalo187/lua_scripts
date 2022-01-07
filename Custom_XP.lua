@@ -74,7 +74,9 @@ end
 local function SetRate(event, player, msg)
 --local function SetRate(event, player, message, Type, lang)
 local PUID = getPlayerCharacterGUID(player)
+if PUID ~= nil then
 local Q = WorldDBQuery(string.format("SELECT * FROM custom_xp WHERE CharID=%i", PUID))
+end
 local mingmrank = 3
 
 		
