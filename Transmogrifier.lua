@@ -26,7 +26,7 @@ Item link icon to Are You sure text
 
 
 
-local NPC_Entry = 60002
+local NPC_Entry = 60000
 
 local Q = WorldDBQuery(string.format("SELECT * FROM creature_template WHERE entry="..NPC_Entry..""))
 
@@ -37,6 +37,17 @@ VALUES(]]..NPC_Entry..[[, 0, 0, 0, 0, 0, 25049, 0, 0, 0, 'Transmog', NULL, NULL,
 
 if not Q then
 WorldDBExecute(createnpc)
+
+end
+
+local deleteentry = WorldDBQuery(string.format("SELECT * FROM creature_template WHERE name='Transmog' AND NOT entry=%i" , NPC_Entry))
+
+if deleteentry then
+    repeat
+        local entry = deleteentry:GetUInt32(0)
+		local deletethem = [[DELETE FROM creature_template WHERE entry=]]..entry..[[;]]
+		WorldDBExecute(deletethem)
+    until not deleteentry:NextRow()
 end
 
 

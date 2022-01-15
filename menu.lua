@@ -142,7 +142,7 @@ player:GossipClearMenu()
 		local mapID = map:GetMapId()
 		local areaId = map:GetAreaId( x, y, z )
 		local faction = player:GetFaction()
-		local Target = player:GetSelectedPlayer()
+		local Target = player:GetSelection()
 		local typeID
 		
 		if Target == nil then
