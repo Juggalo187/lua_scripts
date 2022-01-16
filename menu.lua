@@ -328,9 +328,11 @@ player:GossipClearMenu()
 	player:SendShowBank( player )
 	end
 	
+	--[[
 	if(intid== 17) then 
 	player:SendAuctionMenu( player )
 	end
+	]]
 	
 	if(intid == 99) then
 		player:SendAreaTriggerMessage("Good Bye!")
@@ -449,7 +451,6 @@ if(intid== 49) then
 			end
         end
 	WorldDBExecute(string.format("INSERT INTO world.heirlooms_list (CharID, CharName) VALUES ('%i', '%s')", getPlayerCharacterGUID(player), player:GetName()))
-	--WorldDBExecute(string.format("INSERT INTO world.heirlooms_list VALUES (%i, "..tostring(player:GetName())..")", getPlayerCharacterGUID(player)))
 	player:GossipComplete()
 	end
 	
@@ -476,9 +477,11 @@ if(intid== 49) then
 	if not (GMonlybank and player:GetGMRank() < mingmrank) then
 	player:GossipMenuAddItem(0, "[Open Bank]", 0, 16)
 	end
+	--[[
 	if not (GMonlyah and player:GetGMRank() < mingmrank) then
 	player:GossipMenuAddItem(0, "[Open Auction House]", 0, 17)
 	end
+	]]
 	player:GossipMenuAddItem(0, "Back", 0, 59)
 	player:GossipSendMenu(1, player, 100)
 
@@ -542,6 +545,17 @@ if(intid== 49) then
 	player:GossipComplete()
 	end
 	
+	if(intid== 120) then
+	local Racialnear = player:GetNearestCreature( 80, 98888 )
+	local spawnedRacialNPC
+	if Racialnear == nil then
+	spawnedRacialNPC = player:SpawnCreature( 98888, x+1, y+1, z+0.5, o-3.5, 1, 60 )
+	else
+	player:SendAreaTriggerMessage("Racial Swapper NPC nearby")
+	end
+	player:GossipComplete()
+	end
+	
 	
 	if(intid== 82) then
 	if hirenpcbots then
@@ -553,6 +567,7 @@ if(intid== 49) then
 	player:GossipMenuAddItem(0, "Spawn ProfessionNPC", 0, 117)
 	player:GossipMenuAddItem(0, "Spawn Portal Master", 0, 118)
 	player:GossipMenuAddItem(0, "Spawn Reforger", 0, 119)
+	player:GossipMenuAddItem(0, "Spawn Racial Swapper", 0, 120)
 	
 	player:GossipMenuAddItem(0, "Back", 0, 59)
 	player:GossipSendMenu(1, player, 100)

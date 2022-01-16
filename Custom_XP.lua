@@ -1,3 +1,4 @@
+local enabled = true
 local GMonly = false  --.xp works opens for GM
 
 
@@ -392,7 +393,8 @@ local mingmrank = 3
 	
 end
 
-
+if enabled then
 RegisterPlayerEvent(3, OnLogin)
 RegisterPlayerEvent(12, OnXP)
 RegisterPlayerEvent(42, SetRate)
+end
